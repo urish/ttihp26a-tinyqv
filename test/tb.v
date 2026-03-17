@@ -44,7 +44,7 @@ module tb ();
   wire uart_rx = ui_in_base[7];
   assign ui_in = {uart_rx, game_data, game_clk, game_latch, mhz_clk, spi_miso, ui_in_base[1:0]};
 
-`ifdef GL_TEST
+`ifdef USE_POWER_PINS
   wire VPWR = 1'b1;
   wire VGND = 1'b0;
 `endif
@@ -53,7 +53,7 @@ module tb ();
   tt_um_MichaelBell_tinyQV user_project (
 
       // Include power ports for the Gate Level test:
-`ifdef GL_TEST
+`ifdef USE_POWER_PINS
       .VPWR(VPWR),
       .VGND(VGND),
 `endif
